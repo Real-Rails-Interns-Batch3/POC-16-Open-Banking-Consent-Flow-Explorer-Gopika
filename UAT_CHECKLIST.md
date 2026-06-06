@@ -14,126 +14,197 @@
 
 ---
 
-## Objective
+# Objective
 
-This User Acceptance Testing (UAT) checklist validates that all required functionality, dashboard interactions, visualizations, intelligence panels, and export capabilities operate as expected.
-
----
-
-## Dashboard Validation
-
-| Test Case          | Expected Result                                    | Status |
-| ------------------ | -------------------------------------------------- | ------ |
-| Dashboard Loads    | Dashboard renders without errors                   | PASS   |
-| Obsidian Theme     | Background uses #030712 theme                      | PASS   |
-| 70/30 Layout       | Main stage and sidebar render correctly            | PASS   |
-| Responsive Layout  | Dashboard remains usable on different screen sizes | PASS   |
-| Sidebar Visibility | Intelligence sidebar remains visible               | PASS   |
+This User Acceptance Testing (UAT) checklist validates dashboard functionality, API integrations, visualizations, filtering behavior, export capabilities, consent workflows, and intelligence features implemented for POC #16.
 
 ---
 
-## API Validation
+# Dashboard Validation
 
-| Test Case           | Expected Result                             | Status |
-| ------------------- | ------------------------------------------- | ------ |
-| Metrics API         | Active, Revoked, Expired values displayed   | PASS   |
-| Consent API         | Consent records retrieved successfully      | PASS   |
-| Scope API           | Scope analytics data retrieved successfully | PASS   |
-| Token Analytics API | Token lifecycle data available              | PASS   |
-
----
-
-## Visualization Validation
-
-| Test Case            | Expected Result                 | Status |
-| -------------------- | ------------------------------- | ------ |
-| Scope Chart Renders  | Permission scope chart visible  | PASS   |
-| Chart Data Accuracy  | Scope counts match backend data | PASS   |
-| Consent Flow Diagram | Flow visualization visible      | PASS   |
-| Tooltips Display     | Tooltips appear on hover        | PASS   |
+| Test Case            | Expected Result                                   | Status |
+| -------------------- | ------------------------------------------------- | ------ |
+| Dashboard Loads      | Dashboard renders without errors                  | PASS   |
+| Obsidian Theme       | Background uses #030712 theme                     | PASS   |
+| 70/30 Layout         | Main stage and sidebar render correctly           | PASS   |
+| Responsive Layout    | Dashboard remains usable on multiple screen sizes | PASS   |
+| Sidebar Visibility   | Intelligence sidebar remains visible              | PASS   |
+| Dashboard Navigation | User can access all dashboard sections            | PASS   |
 
 ---
 
-## Consent Workflow Validation
+# API Validation
 
-| Test Case            | Expected Result                       | Status |
-| -------------------- | ------------------------------------- | ------ |
-| Audit Log Loads      | Consent records displayed             | PASS   |
-| Select Consent       | Sidebar updates with selected consent | PASS   |
-| Consent Details View | Selected consent information visible  | PASS   |
-| Revoke Consent       | Consent status changes to revoked     | PASS   |
-| Metrics Update       | Metrics reflect revocation action     | PASS   |
-| Audit Log Update     | Audit history reflects status change  | PASS   |
-
----
-
-## Filtering Validation
-
-| Test Case        | Expected Result                      | Status |
-| ---------------- | ------------------------------------ | ------ |
-| Bank Filter      | Audit log updates correctly          | PASS   |
-| Status Filter    | Audit log updates correctly          | PASS   |
-| Scope Filter     | Audit log updates correctly          | PASS   |
-| Multiple Filters | Combined filtering behaves correctly | PASS   |
-| Filter Reset     | Dashboard returns to default state   | PASS   |
+| Test Case              | Expected Result                                | Status |
+| ---------------------- | ---------------------------------------------- | ------ |
+| Metrics API            | Active, Revoked, Expired metrics displayed     | PASS   |
+| Consent API            | Consent records retrieved successfully         | PASS   |
+| Scope Analytics API    | Scope distribution retrieved successfully      | PASS   |
+| Token Analytics API    | Token metrics available                        | PASS   |
+| Consent Revocation API | Revocation request updates backend dataset     | PASS   |
+| API Failure Logging    | Errors are logged without crashing application | PASS   |
 
 ---
 
-## Token Lifecycle Validation
+# Dataset Validation
 
-| Test Case             | Expected Result                          | Status |
-| --------------------- | ---------------------------------------- | ------ |
-| Token Simulator Loads | Simulator visible                        | PASS   |
-| Expiry Calculation    | Days remaining updates correctly         | PASS   |
-| Expiry Warning        | Risk status changes appropriately        | PASS   |
-| Expired State         | Expired status displayed when applicable | PASS   |
-
----
-
-## Export Validation
-
-| Test Case              | Expected Result                        | Status |
-| ---------------------- | -------------------------------------- | ------ |
-| Download JSON          | JSON file downloads successfully       | PASS   |
-| Exported Data Accuracy | Downloaded data matches displayed data | PASS   |
+| Test Case                 | Expected Result                            | Status |
+| ------------------------- | ------------------------------------------ | ------ |
+| Synthetic Dataset Loaded  | Dashboard loads expanded synthetic dataset | PASS   |
+| Multi-Bank Records        | Multiple banks represented                 | PASS   |
+| Multi-Scope Records       | Multiple permission scopes represented     | PASS   |
+| Active Consent Records    | Active records available                   | PASS   |
+| Revoked Consent Records   | Revoked records available                  | PASS   |
+| Expired Consent Records   | Expired records available                  | PASS   |
+| Refresh History Available | Refresh counts visible                     | PASS   |
+| Dataset Size Validation   | 50 consent records available               | PASS   |
 
 ---
 
-## Intelligence Layer Validation
+# Visualization Validation
 
-| Test Case                     | Expected Result                  | Status |
-| ----------------------------- | -------------------------------- | ------ |
-| Why This Matters Panel        | Information displayed correctly  | PASS   |
-| Who Controls The Rail Panel   | Information displayed correctly  | PASS   |
-| Dashboard Intelligence        | Contextual insights visible      | PASS   |
-| Selected Consent Intelligence | Consent details update correctly | PASS   |
+| Test Case                | Expected Result                     | Status |
+| ------------------------ | ----------------------------------- | ------ |
+| Scope Chart Renders      | Permission scope chart visible      | PASS   |
+| Chart Data Accuracy      | Scope counts match filtered dataset | PASS   |
+| React Flow Diagram Loads | Interactive flow diagram visible    | PASS   |
+| Diagram Navigation       | Zoom and pan controls functional    | PASS   |
+| Tooltip Display          | Tooltips appear on hover            | PASS   |
+| Metrics Cards Display    | Dashboard metrics render correctly  | PASS   |
 
 ---
 
-## Final Acceptance Summary
+# Consent Workflow Validation
 
-### Acceptance Criteria
+| Test Case                       | Expected Result                               | Status |
+| ------------------------------- | --------------------------------------------- | ------ |
+| Audit Log Loads                 | Consent records displayed                     | PASS   |
+| Select Consent                  | Sidebar updates with selected consent         | PASS   |
+| Consent Details View            | Consent intelligence panel updates            | PASS   |
+| Revoke Consent                  | Status changes to revoked                     | PASS   |
+| Metrics Update After Revocation | Metrics update correctly                      | PASS   |
+| Audit Log Update                | Revoked consent appears with updated status   | PASS   |
+| Sidebar State Update            | Sidebar reflects current consent state        | PASS   |
+| Persistence Validation          | Revoked consent remains revoked after refresh | PASS   |
 
-* All required APIs operational
-* All dashboard visualizations functional
-* All filters working correctly
-* Consent workflows validated
-* Token lifecycle simulation operational
-* Export functionality verified
-* Intelligence sidebar functioning correctly
+---
+
+# Filter Validation
+
+| Test Case                     | Expected Result                      | Status |
+| ----------------------------- | ------------------------------------ | ------ |
+| Bank Filter                   | Audit log updates correctly          | PASS   |
+| Status Filter                 | Audit log updates correctly          | PASS   |
+| Scope Filter                  | Audit log updates correctly          | PASS   |
+| Multiple Filters              | Combined filtering behaves correctly | PASS   |
+| Filter Reset                  | Dashboard returns to default state   | PASS   |
+| Bank Filter Updates Metrics   | Metrics update correctly             | PASS   |
+| Status Filter Updates Metrics | Metrics update correctly             | PASS   |
+| Scope Filter Updates Metrics  | Metrics update correctly             | PASS   |
+| Bank Filter Updates Chart     | Chart updates correctly              | PASS   |
+| Status Filter Updates Chart   | Chart updates correctly              | PASS   |
+| Scope Filter Updates Chart    | Chart updates correctly              | PASS   |
+
+---
+
+# Token Lifecycle Validation
+
+| Test Case                        | Expected Result                          | Status |
+| -------------------------------- | ---------------------------------------- | ------ |
+| Token Simulator Loads            | Simulator visible                        | PASS   |
+| Expiry Calculation               | Days remaining calculated correctly      | PASS   |
+| Expiry Warning                   | Risk status updates appropriately        | PASS   |
+| Expired State                    | Expired status displayed when applicable | PASS   |
+| Consent Change Updates Simulator | Simulator refreshes for selected consent | PASS   |
+
+---
+
+# Export Validation
+
+| Test Case       | Expected Result                        | Status |
+| --------------- | -------------------------------------- | ------ |
+| Download JSON   | JSON file downloads successfully       | PASS   |
+| Download CSV    | CSV file downloads successfully        | PASS   |
+| JSON Accuracy   | Exported JSON matches filtered dataset | PASS   |
+| CSV Accuracy    | Exported CSV matches filtered dataset  | PASS   |
+| Filtered Export | Only filtered records are exported     | PASS   |
+
+---
+
+# Intelligence Layer Validation
+
+| Test Case                     | Expected Result                    | Status |
+| ----------------------------- | ---------------------------------- | ------ |
+| Why This Matters Panel        | Information displayed correctly    | PASS   |
+| Who Controls The Rail Panel   | Information displayed correctly    | PASS   |
+| Dashboard Intelligence Panel  | Contextual insights visible        | PASS   |
+| Risk Indicator                | Risk level updates correctly       | PASS   |
+| Selected Consent Intelligence | Consent details update dynamically | PASS   |
+
+---
+
+# User Interaction Validation
+
+| Test Case                      | Expected Result                           | Status |
+| ------------------------------ | ----------------------------------------- | ------ |
+| Row Selection                  | Audit log row selection works             | PASS   |
+| Sidebar Synchronization        | Sidebar updates from selected row         | PASS   |
+| Filter Interaction             | Filters update dashboard immediately      | PASS   |
+| Export Interaction             | Export buttons operate correctly          | PASS   |
+| Flow Diagram Interaction       | React Flow controls function correctly    | PASS   |
+| Consent Revocation Interaction | User can revoke consent through dashboard | PASS   |
+
+---
+
+# Acceptance Criteria
+
+### Required Features
+
+* FastAPI Backend
+* Next.js Frontend
+* Permission Scope Analytics
+* Consent Audit Log
+* Token Lifecycle Monitoring
+* Consent Revocation Workflow
+* Persistent Consent Updates
+* Dynamic Dashboard Filters
+* Download JSON
+* Download CSV
+* React Flow Visualization
+* Intelligence Sidebar
+* Tooltip Support
 
 ### Result
 
-**Overall UAT Status:** PASS
-
-The Open Banking Consent Flow Explorer satisfies all functional requirements defined for POC #16 and is approved for submission.
+All required features validated successfully.
 
 ---
 
-## Sign-off
+# Final Acceptance Summary
+
+## Overall UAT Status: PASS
+
+The Open Banking Consent Flow Explorer successfully satisfies the implemented POC #16 requirements, including:
+
+* Open Banking Consent Intelligence Dashboard
+* Permission Scope Analytics
+* Synthetic Consent Dataset
+* Consent Audit Log
+* Token Lifecycle Monitoring
+* Persistent Consent Revocation Workflow
+* Dynamic Dashboard Filtering
+* JSON Export
+* CSV Export
+* React Flow Consent Visualization
+* Interactive Intelligence Sidebar
+* Contextual Tooltips
+
+---
+
+# Sign-off
 
 **Tester:** Gopika T P
 
-**Status:** APPROVED
+**Result:** APPROVED
 
 **Ready for Submission:** YES
