@@ -11,17 +11,6 @@ import ConsentFlowDiagram from "@/components/dashboard/ConsentFlowDiagram";
 
 import api from "@/lib/api";
 
-interface Metrics {
-  active_consents: number;
-  revoked_consents: number;
-  expired_consents: number;
-}
-
-interface ScopeData {
-  scope: string;
-  count: number;
-}
-
 interface Consent {
   id: string;
   bank: string;
@@ -32,15 +21,12 @@ interface Consent {
   refresh_count: number;
 }
 
+interface ScopeData {
+  scope: string;
+  count: number;
+}
+
 export default function Home() {
-  const [metrics, setMetrics] = useState<Metrics>({
-    active_consents: 0,
-    revoked_consents: 0,
-    expired_consents: 0,
-  });
-
-  const [scopeData, setScopeData] = useState<ScopeData[]>([]);
-
   const [consents, setConsents] = useState<Consent[]>([]);
 
   const [selectedConsent, setSelectedConsent] =
@@ -61,25 +47,6 @@ export default function Home() {
 
   async function loadDashboardData() {
     try {
-      const metricsResponse = await api.get(
-        "/metrics"
-      );
-
-      setMetrics(metricsResponse.data);
-
-      const scopesResponse = await api.get(
-        "/scopes"
-      );
-
-      const formattedScopes = Object.entries(
-        scopesResponse.data
-      ).map(([scope, count]) => ({
-        scope,
-        count: Number(count),
-      }));
-
-      setScopeData(formattedScopes);
-
       const consentsResponse =
         await api.get("/consents");
 
@@ -120,27 +87,52 @@ export default function Home() {
     }
   );
 
-  function revokeConsent() {
+  const filteredScopeData: ScopeData[] = [
+    {
+      scope: "accounts.read",
+      count: filteredConsents.filter(
+        (c) =>
+          c.scope === "accounts.read"
+      ).length,
+    },
+    {
+      scope: "balances.read",
+      count: filteredConsents.filter(
+        (c) =>
+          c.scope === "balances.read"
+      ).length,
+    },
+    {
+      scope: "transactions.read",
+      count: filteredConsents.filter(
+        (c) =>
+          c.scope === "transactions.read"
+      ).length,
+    },
+    {
+      scope: "payments.write",
+      count: filteredConsents.filter(
+        (c) =>
+          c.scope === "payments.write"
+      ).length,
+    },
+  ];
+
+  async function revokeConsent() {
     if (!selectedConsent) return;
 
-    const updatedConsents = consents.map(
-      (consent) =>
-        consent.id === selectedConsent.id
-          ? {
-              ...consent,
-              status: "revoked",
-            }
-          : consent
-    ) as Consent[];
+    try {
+      await api.post(
+        `/revoke/${selectedConsent.id}`
+      );
 
-    setConsents(updatedConsents);
-
-    const updatedSelected =
-      updatedConsents.find(
-        (c) => c.id === selectedConsent.id
-      ) || null;
-
-    setSelectedConsent(updatedSelected);
+      await loadDashboardData();
+    } catch (error) {
+      console.error(
+        "Failed to revoke consent:",
+        error
+      );
+    }
   }
 
   return (
@@ -170,23 +162,26 @@ export default function Home() {
 
         <MetricsCards
           active={
-            consents.filter(
+            filteredConsents.filter(
               (c) => c.status === "active"
             ).length
           }
           revoked={
-            consents.filter(
+            filteredConsents.filter(
               (c) => c.status === "revoked"
             ).length
           }
           expired={
-            consents.filter(
+            filteredConsents.filter(
               (c) => c.status === "expired"
             ).length
           }
         />
 
-        <ConsentFlowChart data={scopeData} />
+        <ConsentFlowChart
+          data={filteredScopeData}
+        />
+
         <ConsentFlowDiagram />
 
         <AuditLog
