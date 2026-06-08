@@ -3,7 +3,7 @@
     "id": "CONS001",
     "bank": "HSBC",
     "scope": "accounts.read",
-    "status": "active",
+    "status": "revoked",
     "created_at": "2026-01-01",
     "expires_at": "2026-06-30",
     "refresh_count": 1
@@ -66,7 +66,7 @@
     "id": "CONS008",
     "bank": "Lloyds",
     "scope": "payments.write",
-    "status": "active",
+    "status": "revoked",
     "created_at": "2026-01-22",
     "expires_at": "2026-07-21",
     "refresh_count": 8
@@ -102,7 +102,7 @@
     "id": "CONS012",
     "bank": "Barclays",
     "scope": "payments.write",
-    "status": "active",
+    "status": "revoked",
     "created_at": "2026-02-03",
     "expires_at": "2026-08-02",
     "refresh_count": 12
