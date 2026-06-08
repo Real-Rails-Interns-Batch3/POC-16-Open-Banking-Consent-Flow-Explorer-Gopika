@@ -314,7 +314,7 @@ export default function Sidebar({
             </p>
 
             <p>
-              Export: JSON Download Enabled
+              Export: JSON & CSV Enabled
             </p>
 
             <p>
@@ -328,6 +328,43 @@ export default function Sidebar({
                 : "Low"}
             </p>
           </div>
+        </CardContent>
+      </Card>
+
+    <Card className="bg-slate-950 border-slate-800 text-white">
+      <CardHeader>
+        <CardTitle>
+          Dataset Information
+        </CardTitle>
+      </CardHeader>
+
+      <CardContent>
+        <p className="text-sm text-slate-400">
+          This dashboard uses a synthetic Open
+          Banking consent dataset for analytics,
+          visualization, testing, and workflow
+          simulation.
+        </p>
+      </CardContent>
+    </Card>
+
+      <Card className="bg-slate-950 border-slate-800 text-white">
+        <CardHeader>
+          <CardTitle>
+            Source Attribution
+          </CardTitle>
+        </CardHeader>
+
+        <CardContent>
+          <ul className="space-y-2 text-sm text-slate-400">
+              Visualization uses synthetic consent records.
+            <p>
+              Industry references sourced from:
+            </p>
+            <li>• Open Banking UK</li>
+            <li>• Plaid Documentation</li>
+            <li>• TrueLayer Documentation</li>
+          </ul>
         </CardContent>
       </Card>
 
