@@ -1,6 +1,6 @@
 # Open Banking Consent Flow Explorer
 
-Real Rails Intelligence Dashboard for visualizing Open Banking consent management, permission scope analytics, token lifecycle monitoring, and consent intelligence workflows.
+Real Rails Intelligence Dashboard for visualizing Open Banking consent management, permission scope analytics, token lifecycle monitoring, consent workflows, and operational intelligence.
 
 ---
 
@@ -14,9 +14,9 @@ Real Rails Intelligence Dashboard for visualizing Open Banking consent managemen
 
 Open Banking Consent Flow Explorer is an interactive intelligence dashboard designed to provide visibility into customer consent management across Open Banking ecosystems.
 
-The application combines consent analytics, permission scope visualization, token lifecycle monitoring, audit workflows, consent revocation, and intelligence insights into a single operational dashboard.
+The dashboard combines consent analytics, permission scope visualization, token lifecycle monitoring, consent revocation workflows, audit history, filtering, exports, and contextual intelligence into a unified operational view.
 
-Built using FastAPI and Next.js, the project follows the Real Rails Intelligence Dashboard architecture and emphasizes transforming raw consent data into actionable insights.
+Built using FastAPI and Next.js, the project follows the Real Rails Intelligence Dashboard architecture and demonstrates how Open Banking consent activity can be monitored and analyzed through interactive visualizations.
 
 ---
 
@@ -41,20 +41,28 @@ Built using FastAPI and Next.js, the project follows the Real Rails Intelligence
 
 ## Data Sources
 
-The project uses a synthetic Open Banking consent dataset designed to simulate realistic consent lifecycle activity.
+### Synthetic Dataset
 
-### Synthetic Dataset Includes
+This project uses a synthetic Open Banking consent dataset for demonstration and visualization purposes.
+
+Dataset characteristics:
 
 * 50 consent records
-* Multi-bank consent records
-* Permission scope distribution
-* Active consents
-* Revoked consents
-* Expired consents
+* Multiple banks
+* Multiple permission scopes
+* Active consent records
+* Revoked consent records
+* Expired consent records
 * Token refresh history
 * Consent lifecycle events
 
-### Referenced Resources
+### Dataset Labeling
+
+The dashboard explicitly identifies the dataset as synthetic sample data used for visualization and analytics demonstrations.
+
+### Source Attribution
+
+The project references publicly available Open Banking resources:
 
 * Open Banking UK
 * Plaid Documentation
@@ -89,7 +97,7 @@ Fields include:
 * Status
 * Refresh Count
 
-Selecting a row updates the intelligence sidebar.
+Selecting a consent updates the intelligence sidebar.
 
 ---
 
@@ -104,7 +112,7 @@ Displays:
 * Expiry Risk
 * Refresh Count
 
-States:
+Possible states:
 
 * Active
 * Expiring Soon
@@ -119,8 +127,8 @@ Allows users to revoke consent directly from the dashboard.
 Updates:
 
 * Selected Consent
-* Metrics Cards
 * Audit Log
+* Metrics Cards
 * Dashboard State
 
 Revocation requests are persisted through the FastAPI backend and remain effective after page refreshes.
@@ -129,7 +137,7 @@ Revocation requests are persisted through the FastAPI backend and remain effecti
 
 ### Dashboard Filters
 
-Supports real-time filtering across the entire dashboard.
+Supports real-time filtering across the dashboard.
 
 #### Bank
 
@@ -158,8 +166,8 @@ Filters dynamically update:
 
 * Audit Log
 * Metrics Cards
-* Permission Scope Chart
-* Exported Dataset
+* Permission Scope Analytics
+* Exported Data
 
 ---
 
@@ -218,28 +226,26 @@ Features:
 
 Provides contextual intelligence layers.
 
-Includes:
-
 #### Why This Matters
 
-Explains Open Banking consent significance.
+Explains the significance of customer consent management.
 
 #### Who Controls The Rail
 
-Explains ecosystem stakeholders:
+Explains ecosystem participants:
 
 * Banks
 * Aggregators
 * Regulators
-* Third Party Providers
+* Third-Party Providers
 
 #### Dashboard Intelligence
 
 Provides:
 
-* Risk Indicator
-* Current Dashboard Context
-* Operational Insights
+* Risk Indicators
+* Current Operational Context
+* Consent Insights
 
 #### Selected Consent Intelligence
 
@@ -257,7 +263,13 @@ Displays:
 
 ### Tooltips
 
-Interactive tooltips are available on dashboard metric cards to provide additional context about consent status metrics.
+Contextual tooltips are available on dashboard metrics to improve usability and explain consent-related indicators.
+
+---
+
+### Source Attribution Panel
+
+The dashboard includes attribution information identifying referenced Open Banking resources and clarifying the use of synthetic sample data.
 
 ---
 
@@ -281,6 +293,7 @@ The dashboard follows the Real Rails Intelligence Dashboard standard.
 * Dashboard Intelligence
 * Filters
 * Export Controls
+* Dataset Information
 
 ---
 
@@ -296,7 +309,7 @@ FastAPI Backend
 Synthetic Consent Dataset
         │
         ▼
-Analytics + Intelligence Layer
+Analytics & Intelligence Layer
         │
         ▼
 Dashboard Visualizations
@@ -370,74 +383,6 @@ Updates consent status to revoked and persists the change.
 
 ---
 
-## Project Structure
-
-```text
-POC-16-Open-Banking-Consent-Flow-Explorer-Gopika
-
-├── backend/
-│   ├── app/
-│   └── requirements.txt
-│
-├── frontend/
-│   ├── app/
-│   ├── components/
-│   ├── lib/
-│   └── package.json
-│
-├── screenshots/
-│   ├── Dashboard.png
-│   ├── Consent_Flow.png
-│   ├── AuditLog.png
-│   ├── Filters.png
-│   └── Revoke_Consent.png
-│
-├── README.md
-├── VAR_REPORT.md
-├── UAT_CHECKLIST.md
-└── .gitignore
-```
-
----
-
-## Local Setup
-
-### Backend
-
-```bash
-cd backend
-
-pip install -r requirements.txt
-
-uvicorn app.main:app --reload
-```
-
-Runs on:
-
-```text
-http://localhost:8000
-```
-
----
-
-### Frontend
-
-```bash
-cd frontend
-
-npm install
-
-npm run dev
-```
-
-Runs on:
-
-```text
-http://localhost:3000
-```
-
----
-
 ## Validation Documents
 
 The repository includes:
@@ -447,9 +392,9 @@ The repository includes:
 
 These documents validate:
 
-* Visualization Quality
 * Dashboard Compliance
-* Functional Testing
+* Visualization Quality
+* Functional Validation
 * User Acceptance Testing
 
 ---

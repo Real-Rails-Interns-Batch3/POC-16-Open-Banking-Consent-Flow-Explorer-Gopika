@@ -10,13 +10,11 @@
 
 **Tester:** Gopika T P
 
-**Test Date:** May 2026
-
 ---
 
 # Objective
 
-This User Acceptance Testing (UAT) checklist validates dashboard functionality, API integrations, visualizations, filtering behavior, export capabilities, consent workflows, and intelligence features implemented for POC #16.
+This User Acceptance Testing (UAT) checklist validates dashboard functionality, API integrations, visualizations, filtering behavior, export capabilities, consent workflows, intelligence features, dataset transparency, and source attribution implemented for POC #16.
 
 ---
 
@@ -35,29 +33,29 @@ This User Acceptance Testing (UAT) checklist validates dashboard functionality, 
 
 # API Validation
 
-| Test Case              | Expected Result                                | Status |
-| ---------------------- | ---------------------------------------------- | ------ |
-| Metrics API            | Active, Revoked, Expired metrics displayed     | PASS   |
-| Consent API            | Consent records retrieved successfully         | PASS   |
-| Scope Analytics API    | Scope distribution retrieved successfully      | PASS   |
-| Token Analytics API    | Token metrics available                        | PASS   |
-| Consent Revocation API | Revocation request updates backend dataset     | PASS   |
-| API Failure Logging    | Errors are logged without crashing application | PASS   |
+| Test Case              | Expected Result                            | Status |
+| ---------------------- | ------------------------------------------ | ------ |
+| Metrics API            | Active, Revoked, Expired metrics displayed | PASS   |
+| Consent API            | Consent records retrieved successfully     | PASS   |
+| Scope Analytics API    | Scope distribution retrieved successfully  | PASS   |
+| Token Analytics API    | Token metrics available                    | PASS   |
+| Consent Revocation API | Revocation request updates backend dataset | PASS   |
+| API Failure Logging    | Errors logged without crashing application | PASS   |
 
 ---
 
 # Dataset Validation
 
-| Test Case                 | Expected Result                            | Status |
-| ------------------------- | ------------------------------------------ | ------ |
-| Synthetic Dataset Loaded  | Dashboard loads expanded synthetic dataset | PASS   |
-| Multi-Bank Records        | Multiple banks represented                 | PASS   |
-| Multi-Scope Records       | Multiple permission scopes represented     | PASS   |
-| Active Consent Records    | Active records available                   | PASS   |
-| Revoked Consent Records   | Revoked records available                  | PASS   |
-| Expired Consent Records   | Expired records available                  | PASS   |
-| Refresh History Available | Refresh counts visible                     | PASS   |
-| Dataset Size Validation   | 50 consent records available               | PASS   |
+| Test Case                  | Expected Result                              | Status |
+| -------------------------- | -------------------------------------------- | ------ |
+| Synthetic Dataset Loaded   | Dashboard loads consent dataset successfully | PASS   |
+| Multi-Bank Records         | Multiple banks represented                   | PASS   |
+| Multi-Scope Records        | Multiple permission scopes represented       | PASS   |
+| Active Consent Records     | Active records available                     | PASS   |
+| Revoked Consent Records    | Revoked records available                    | PASS   |
+| Expired Consent Records    | Expired records available                    | PASS   |
+| Refresh History Available  | Refresh counts visible                       | PASS   |
+| Dataset Transparency Label | Synthetic data notice displayed              | PASS   |
 
 ---
 
@@ -83,7 +81,7 @@ This User Acceptance Testing (UAT) checklist validates dashboard functionality, 
 | Consent Details View            | Consent intelligence panel updates            | PASS   |
 | Revoke Consent                  | Status changes to revoked                     | PASS   |
 | Metrics Update After Revocation | Metrics update correctly                      | PASS   |
-| Audit Log Update                | Revoked consent appears with updated status   | PASS   |
+| Audit Log Update                | Revoked consent displays updated status       | PASS   |
 | Sidebar State Update            | Sidebar reflects current consent state        | PASS   |
 | Persistence Validation          | Revoked consent remains revoked after refresh | PASS   |
 
@@ -127,7 +125,7 @@ This User Acceptance Testing (UAT) checklist validates dashboard functionality, 
 | Download CSV    | CSV file downloads successfully        | PASS   |
 | JSON Accuracy   | Exported JSON matches filtered dataset | PASS   |
 | CSV Accuracy    | Exported CSV matches filtered dataset  | PASS   |
-| Filtered Export | Only filtered records are exported     | PASS   |
+| Filtered Export | Only filtered records exported         | PASS   |
 
 ---
 
@@ -140,6 +138,17 @@ This User Acceptance Testing (UAT) checklist validates dashboard functionality, 
 | Dashboard Intelligence Panel  | Contextual insights visible        | PASS   |
 | Risk Indicator                | Risk level updates correctly       | PASS   |
 | Selected Consent Intelligence | Consent details update dynamically | PASS   |
+
+---
+
+# Source Attribution Validation
+
+| Test Case                         | Expected Result             | Status |
+| --------------------------------- | --------------------------- | ------ |
+| Attribution Section Visible       | Sources displayed correctly | PASS   |
+| Open Banking UK Reference         | Source listed correctly     | PASS   |
+| Plaid Documentation Reference     | Source listed correctly     | PASS   |
+| TrueLayer Documentation Reference | Source listed correctly     | PASS   |
 
 ---
 
@@ -172,6 +181,8 @@ This User Acceptance Testing (UAT) checklist validates dashboard functionality, 
 * Download CSV
 * React Flow Visualization
 * Intelligence Sidebar
+* Synthetic Data Labeling
+* Source Attribution
 * Tooltip Support
 
 ### Result
@@ -197,6 +208,8 @@ The Open Banking Consent Flow Explorer successfully satisfies the implemented PO
 * CSV Export
 * React Flow Consent Visualization
 * Interactive Intelligence Sidebar
+* Dataset Transparency Labeling
+* Source Attribution
 * Contextual Tooltips
 
 ---
